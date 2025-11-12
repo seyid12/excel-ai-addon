@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Excel AI Add-in Functions</title>
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  <script>
+    // Excel JavaScript API hazır olduğunda çalışacak
+    Office.onReady(() => {
+      console.log("Functions ready!");
+    });
+
+    // Örnek: Hücreye basit metin yazma fonksiyonu
+    function writeHello() {
+      Excel.run(async (context) => {
+        const sheet = context.workbook.worksheets.getActiveWorksheet();
+        const range = sheet.getRange("A1");
+        range.values = [["Hello from AI Add-in!"]];
+        await context.sync();
+      }).catch((error) => {
+        console.error(error);
+      });
+    }
+
+    // Örnek: Hücre değerini okuma
+    function readCellA1() {
+      Excel.run(async (context) => {
+        const sheet = context.workbook.worksheets.getActiveWorksheet();
+        const range = sheet.getRange("A1");
+        range.load("values");
+        await context.sync();
+        console.log("A1 değeri:", range.values[0][0]);
+      }).catch((error) => console.error(error));
+    }
+
+    // Bu fonksiyonlar manifest’te Excel Functions olarak bağlanabilir
+    // <FunctionFile resid="functionFile"/>
+  </script>
+</head>
+<body>
+  <h3>Excel AI Add-in Functions</h3>
+  <button onclick="writeHello()">A1 Hücresine Yaz</button>
+  <button onclick="readCellA1()">A1 Hücresini Oku</button>
+</body>
+</html>

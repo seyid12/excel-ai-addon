@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+           xsi:type="TaskPaneApp">
+
+  <Id>f5a1c3e2-1234-4567-89ab-cdef01234567</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Senin İsmin</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Excel AI Add-in"/>
+  <Description DefaultValue="Veri analizi ve istatistik için AI destekli Excel eklentisi"/>
+  <IconUrl DefaultValue="https://seyid12.github.io/excel-ai-addon/icon.png"/>
+  <SupportUrl DefaultValue="https://seyid12.github.io/excel-ai-addon/"/>
+
+  <Hosts>
+    <Host Name="Workbook"/>
+  </Hosts>
+
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://seyid12.github.io/excel-ai-addon/taskpane.html"/>
+  </DefaultSettings>
+
+  <Permissions>ReadWriteDocument</Permissions>
+
+  <!-- Taskpane Overrides -->
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" Version="1.1">
+    <Hosts>
+      <Host xsi:type="Workbook">
+        <DesktopFormFactor>
+          <GetStarted>
+            <Title>Excel AI Add-in</Title>
+            <Description>Veri analizi ve istatistik için AI destekli eklenti</Description>
+          </GetStarted>
+          <FunctionFile resid="functionFile"/>
+          <Taskpane id="taskpane" resid="Taskpane.Url" Dock="Right"/>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+
+    <Resources>
+      <bt:Urls>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://seyid12.github.io/excel-ai-addon/taskpane.html"/>
+        <bt:Url id="functionFile" DefaultValue="https://seyid12.github.io/excel-ai-addon/functions.html"/>
+      </bt:Urls>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>
